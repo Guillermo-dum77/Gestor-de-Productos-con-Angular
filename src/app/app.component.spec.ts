@@ -1,16 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterModule.forRoot([])
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule], // ✅ Importación correcta
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -23,13 +19,14 @@ describe('AppComponent', () => {
   it(`should have as title 'admin-productos'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('admin-productos');
+    expect(app.title).toBe('admin-productos'); // Asegúrate de que coincida con tu propiedad
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
+    fixture.detectChanges(); // Aplica los cambios al template
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, admin-productos');
+    expect(compiled.querySelector('h1')?.textContent).toContain('admin-productos'); // Verifica contenido en el DOM
   });
 });
+

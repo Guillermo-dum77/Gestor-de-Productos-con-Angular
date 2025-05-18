@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  {{ editando ? 'Editar Producto' : 'Nuevo Producto' }}
+</mat-toolbar>
+
+<div class="container">
+  <form (ngSubmit)="guardar()" #form="ngForm" class="formulario">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="producto.nombre" name="nombre" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Precio</mat-label>
+      <input matInput type="number" [(ngModel)]="producto.precio" name="precio" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput rows="4" [(ngModel)]="producto.descripcion" name="descripcion"></textarea>
+    </mat-form-field>
+
+    <div class="acciones">
+      <button mat-stroked-button color="primary" type="submit">Guardar</button>
+      <button mat-button type="button" routerLink="/">Cancelar</button>
+    </div>
+  </form>
+</div>
